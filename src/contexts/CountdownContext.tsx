@@ -25,7 +25,7 @@ export function CountdownProvider( {children} : CountdownProviderProps) {
 
     let countdownTimeout: NodeJS.Timeout;
 
-    const [time, setTime] = useState(0.1 * 60);
+    const [time, setTime] = useState(25 * 60);
     const [isActive, setIsActive] = useState(false);
     const [hasFinished, setHasFinished] = useState(false);
 
@@ -39,13 +39,13 @@ export function CountdownProvider( {children} : CountdownProviderProps) {
     function resetCountdown(){
         clearTimeout(countdownTimeout);
         setIsActive(false);
-        setTime(0.1 * 60);
+        setTime(25 * 60);
         setHasFinished(false);
     }
 
     useEffect( () => {
         
-        if(isActive && time > 0)
+        if(isActive && time > 60)
         {            
             countdownTimeout = setTimeout(() => {
             setTime(time - 1);
